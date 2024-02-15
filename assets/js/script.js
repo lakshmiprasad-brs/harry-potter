@@ -30,6 +30,11 @@ const loadCharacters = async() => {
 };
 
 const displayCharacters = (characters) => {
+    if (characters.length === 0) {
+        charactersList.innerHTML = "<li class='not-found'>Not Found</li>";
+        return;
+    }
+    
     const htmlString = characters
         .map((character) => {
             return `
@@ -47,6 +52,7 @@ const displayCharacters = (characters) => {
         .join('');
     charactersList.innerHTML = htmlString;
 };
+
 
 function setTheme(theme) {
     document.documentElement.style.setProperty('--primary-color', theme);
